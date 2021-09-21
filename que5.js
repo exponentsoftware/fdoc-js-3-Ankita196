@@ -121,3 +121,38 @@ const rateProduct = (_id, password, productname, rating) => {
 };
 
 rateProduct("ab12ex", "123123", "TV", 10);
+
+
+const avgRating = (productname) => {
+  let ratingSum = 0;
+  let Product = products.find((Product) => Product.name === productname);
+  if (Product) {
+    Product.ratings.forEach((item) => {
+      ratingSum = item.rate + ratingSum;
+    });
+    return console.log(ratingSum / Product.ratings.length);
+  } else {
+    return console.log("Product not found");
+  }
+};
+
+avgRating("mobile phone");
+
+const likeProduct = (userid, productname) => {
+  let User = users.find((User) => User._id === userid);
+  let Product = products.find((Product) => Product.name === productname);
+  if (Product) {
+    if (Product.likes.includes(userid)) {
+      Product.likes.pop({ userId: userid });
+      console.log("disliked");
+    } else {
+      Product.likes.push({ userId: userid });
+      console.log("like added");
+    }
+  } else {
+    console.log("product not found");
+  }
+};
+
+likeProduct("fg12cy", "Laptop");
+
