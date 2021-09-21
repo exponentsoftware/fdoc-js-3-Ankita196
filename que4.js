@@ -33,3 +33,6 @@ console.log(objectValuesArray.length);
 
 const skillkey = student.skills;
 console.log(Object.keys(skillkey).length);
+
+console.log(student.hasOwnProperty('name'));
+
